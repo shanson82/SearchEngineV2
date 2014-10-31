@@ -1,0 +1,14 @@
+Team 6 To do:
+
+Tasks for the next week:
+Perform more research to understand problem (all)
+Write unit tests and complete Checkpoint class (Ray)
+Get Disk Space class implemented (Yicheng and Justin)
+Research linked list implementations in Java (Will)
+Create a working linked list (Will)
+Complete Allocate class with unit tests (Steve)
+
+Following tasks are not divided among group members yet
+Start Key storage and Value storage 
+Work on Node class
+
