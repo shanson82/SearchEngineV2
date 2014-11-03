@@ -1,0 +1,23 @@
+package org.uiowa.cs2820.engine;
+import java.util.*;
+
+public class NodeLinks {
+
+
+
+    public byte[] byteGuy;
+    public NodeLinks next; 
+   
+  
+   
+    public NodeLinks(byte[] byteGuy, NodeLinks next){
+        this.byteGuy = byteGuy;
+        this.next = next;
+    }
+    
+    public String toString() {
+    	return byteGuy + ""; 
+    	
+    }
+}
+	
