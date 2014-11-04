@@ -12,3 +12,11 @@ Following tasks are not divided among group members yet
 Start Key storage and Value storage 
 Work on Node class
 
+11/4 Comment by Ted Herman -
+Would be good to know the names of the files and classes
+that each person will be working on, so as to better 
+track the git updates.  Also, the .project file was 
+not checked in (do "git add .project") so that a git clone
+or git pull will have what's needed for Eclipse to import
+the repository.
+
