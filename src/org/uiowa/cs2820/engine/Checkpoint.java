@@ -1,29 +1,33 @@
-package src.org.uiowa.cs2820.engine;
+import java.io.*;
 
 import src.org.uiowa.cs2820.engine.Field;
 
 public class Checkpoint {
 	
-	private Field f;
+	private Object o;
+	private String dir;
 	private String filename;
 	
-	public void Checkpoint(Field f, String filename){
-		this.f = f;
+	public void Checkpoint(Object o, String dir, String filename){
+		this.o = o;
+		this.dir = dir;
 		this.filename = filename;
 	}
 	
 	public void save(){
-		//open file;
-		Field.convert(f);
-		//write into file;
-		//close file;
+		FileOutputStream f = new FileOutputStream(filename);
+		byte[] bArray = Field.convert(o);
+		f.write(o);
+		f.close();
+		return;
 	}
 	
 	public Object restore(){
-		//open file;
-		//read line
-		Object o = Field.revert(line);
-		//close file
-		return o;
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		FileInputStream f = new FileInputStream(filename);
+		byte[] bArray = baos.toByteArray(f);
+		Object obj = Field.revert(bArray);
+		f.close();
+		return obj;
 	}
 }
