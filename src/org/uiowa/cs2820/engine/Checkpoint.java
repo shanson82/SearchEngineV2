@@ -17,7 +17,9 @@ public class Checkpoint {
 	public void save(){
 		FileOutputStream f = new FileOutputStream(filename);
 		byte[] bArray = Field.convert(o);
-		f.write(o);
+		// need to write the byte array, not the object
+		//f.write(o);
+		f.write(bArray);
 		f.close();
 		return;
 	}
@@ -25,7 +27,10 @@ public class Checkpoint {
 	public Object restore(){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		FileInputStream f = new FileInputStream(filename);
-		byte[] bArray = baos.toByteArray(f);
+		//byte[] bArray = baos.toByteArray(f);
+		// can read file input stream into a byte array
+		byte[] bArray;
+		f.read(bArray);
 		Object obj = Field.revert(bArray);
 		f.close();
 		return obj;
