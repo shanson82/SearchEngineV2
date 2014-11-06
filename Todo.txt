@@ -20,3 +20,12 @@ not checked in (do "git add .project") so that a git clone
 or git pull will have what's needed for Eclipse to import
 the repository.
 
+
+11/6 Update
+.project file was added to the repository
+Each member has a class that they are primarily responsible for, but all members are helping each other as needed to keep moving forward. 
+Checkpoint - Yicheng
+Allocate - Steve
+Diskspace - Raymond
+KeyStorage - Justin
+ValueStorage - Will
