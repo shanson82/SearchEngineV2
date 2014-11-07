@@ -9,11 +9,16 @@ public class Checkpoint {
 	private static final String filename = "memoryMap.txt";
 	
 	//parse in the object only
-	public Checkpoint(Object o) throws IOException{//check to make sure if file exist
+	public Checkpoint(Object o){//check to make sure if file exist
 		this.o = o;
 		File file = new File(filename);
 		if(!file.exists()){
-			file.createNewFile();
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

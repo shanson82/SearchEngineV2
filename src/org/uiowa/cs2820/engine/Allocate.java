@@ -9,10 +9,8 @@ public class Allocate {
 	
 	// not quite sure about this 
 	// need a file name to store the bit array
-	private final String filename = "memorymap.txt";
-	private final String dir = "/home/steve/Desktop/";
 	private BitSet space = new BitSet();
-	Checkpoint c = new Checkpoint((Object) space, dir, filename);
+	Checkpoint c = new Checkpoint((Object) space);
 	
 	
 	// allocate finds the next available block that can be allocated for use
