@@ -6,7 +6,7 @@ import java.lang.String;
 public class Checkpoint {
 	
 	private Object o;
-	private static final String filename = "memoryMap.txt";
+	private final String filename = "memoryMap.txt";
 	
 	//parse in the object only
 	public Checkpoint(Object o){//check to make sure if file exist
@@ -26,16 +26,14 @@ public class Checkpoint {
 		FileOutputStream f = new FileOutputStream(filename);
 		byte[] bArray = utility.convert(o);
 		// need to write the byte array, not the object
-		//f.write(o);
 		f.write(bArray);
 		f.close();
 		return;
 	}
 	
 	public Object restore() throws IOException{
-		byte[] bArray = null;
 		FileInputStream f = new FileInputStream(filename);
-		// can read file input stream into a byte array
+		byte[] bArray = new byte[1024];//the length of byte[] may need a bigger value
 		f.read(bArray);
 		Object obj = utility.revert(bArray);
 		f.close();
