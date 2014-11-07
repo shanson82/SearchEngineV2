@@ -1,19 +1,20 @@
 package src.org.uiowa.cs2820.engine;
 
 import java.io.*;
-
-import src.org.uiowa.cs2820.engine.Field;
+import java.lang.String;
 
 public class Checkpoint {
 	
 	private Object o;
-	private String dir;
-	private String filename;
+	private static final String filename = "memoryMap.txt";
 	
-	public Checkpoint(Object o, String dir, String filename){
+	//parse in the object only
+	public Checkpoint(Object o) throws IOException{//check to make sure if file exist
 		this.o = o;
-		this.dir = dir;
-		this.filename = filename;
+		File file = new File(filename);
+		if(!file.exists()){
+			file.createNewFile();
+		}
 	}
 	
 	public void save() throws IOException{
@@ -27,11 +28,9 @@ public class Checkpoint {
 	}
 	
 	public Object restore() throws IOException{
-		//ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		byte[] bArray = null;
 		FileInputStream f = new FileInputStream(filename);
-		//byte[] bArray = baos.toByteArray(f);
 		// can read file input stream into a byte array
-		byte[] bArray;
 		f.read(bArray);
 		Object obj = utility.revert(bArray);
 		f.close();
