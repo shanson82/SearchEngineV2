@@ -18,7 +18,7 @@ public class Checkpoint {
 	
 	public void save() throws IOException{
 		FileOutputStream f = new FileOutputStream(filename);
-		byte[] bArray = Field.convert(o);
+		byte[] bArray = utility.convert(o);
 		// need to write the byte array, not the object
 		//f.write(o);
 		f.write(bArray);
@@ -27,13 +27,13 @@ public class Checkpoint {
 	}
 	
 	public Object restore() throws IOException{
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		//ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		FileInputStream f = new FileInputStream(filename);
-		byte[] bArray = baos.toByteArray(f);
+		//byte[] bArray = baos.toByteArray(f);
 		// can read file input stream into a byte array
 		byte[] bArray;
 		f.read(bArray);
-		Object obj = Field.revert(bArray);
+		Object obj = utility.revert(bArray);
 		f.close();
 		return obj;
 	}
