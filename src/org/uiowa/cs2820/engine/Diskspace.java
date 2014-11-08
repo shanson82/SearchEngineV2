@@ -9,10 +9,10 @@ public class Diskspace {
 	
 	private static File diskMem;
 	
-	//Diskspace() {
-		//constructor may not be necessary if no one is 
-		//actually going to create a new diskspace.
-	//}
+	//constructor for diskspace
+	Diskspace(File filename){
+		this.diskMem = filename;
+	}
 	
 	//writes a byte to an area in the file
 	public void writeArea(int areaNum, byte[] element) throws IOException{
