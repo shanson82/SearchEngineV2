@@ -8,15 +8,13 @@ public class Node {
   //ArrayList<String> Identifiers;
   long ValueArea; //where ValueStorage area starts
   
-  Node(byte[] f, String id) {
+  Node(byte[] f, long areaNum) { //(field_object,area_started)
 	this.Key = f;
-	this.Identifiers = new ArrayList<String>();
-	this.Identifiers.add(id);
+	this.ValueArea = areaNum;
     }
   
   public void add(String id) { 
-	Identifiers.remove(id);  // does nothing if id not already there
-	Identifiers.add(id);
+	
     }
   
   public void del(String id) {
