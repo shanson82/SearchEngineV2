@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Node {
   // Node is a basic unit in the database
-  byte[] Key;  // Key of this node for lookup
-  ArrayList<String> Identifiers;
-  int size;    // not yet implemented
+  byte[] Key;  //Field object converted to byte[]
+  //ArrayList<String> Identifiers;
+  long ValueArea; //where ValueStorage area starts
   
   Node(byte[] f, String id) {
 	this.Key = f;
