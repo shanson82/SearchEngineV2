@@ -13,3 +13,6 @@ in Node?
 The second element of the Node needs to be an integer that represents the starting 
 point for the valueStorage to start writing.
 -Justin
+
+So is the node class ready now or do we still have to modify it somehow?
+-Raymond --> Justin
