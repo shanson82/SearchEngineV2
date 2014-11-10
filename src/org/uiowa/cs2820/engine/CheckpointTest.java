@@ -23,8 +23,11 @@ public class CheckpointTest {
 		Checkpoint ckp2 = new Checkpoint(s1);
 		ckp2.save();
 		int[] s2 = (int[]) ckp2.restore();
-		System.out.println("s2 = "+s2);
-		assertEquals(s1, s2);
+		assertEquals(s1[0], s2[0]);
+		assertEquals(s1[1], s2[1]);
+		assertEquals(s1[2], s2[2]);
+		assertEquals(s1[3], s2[3]);
+		assertEquals(s1[4], s2[4]);
 	}
 	
 	@Test
@@ -33,7 +36,8 @@ public class CheckpointTest {
 		Checkpoint ckp3 = new Checkpoint(s1);
 		ckp3.save();
 		Field s2 = (Field) ckp3.restore();
-		assertEquals(s1, s2);
+		assertEquals(s1.getFieldName(), s2.getFieldName());
+		assertEquals(s1.getFieldValue(), s2.getFieldValue());
 	}
 	
 	@Test
