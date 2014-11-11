@@ -16,3 +16,13 @@ point for the valueStorage to start writing.
 
 So is the node class ready now or do we still have to modify it somehow?
 -Raymond --> Justin
+
+11/11
+For Raymond -
+In the read() method in the diskspace class the area number given to 
+disk.seek should be multiplied by 1024 (should probably create a global 
+constant in the diskspace class for the block size). And disk.readByte() should
+be changed to disk.read(byte[] b) or disk.readFully(byte[] b). I'm not sure which
+method should be used. In the write method, the area number should also be multiplied
+by the block size when using the seek() method.
+-Steve
