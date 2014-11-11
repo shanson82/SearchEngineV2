@@ -2,6 +2,12 @@ package src.org.uiowa.cs2820.engine;
 
 import java.io.*;
 import java.util.Arrays;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOut;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 public class utility implements Serializable{
 	public static byte[] convert(Object O) {
