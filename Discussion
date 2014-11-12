@@ -26,3 +26,8 @@ be changed to disk.read(byte[] b) or disk.readFully(byte[] b). I'm not sure whic
 method should be used. In the write method, the area number should also be multiplied
 by the block size when using the seek() method.
 -Steve
+
+Hey I updated the diskspace with the multiplication of 1024 but I did not change the read byte 
+because if it takes an argument then the areaNum would be returned. disk.seek(areaNum) goes to 
+the location and the disk.readByte() returns whatever byte is at that location.
+-Raymond --> Steve
