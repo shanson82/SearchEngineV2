@@ -1,4 +1,4 @@
-package org.uiowa.cs2820.engine;
+package src.org.uiowa.cs2820.engine;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,10 +40,10 @@ public class Diskspace {
 	}
 	//reads a byte from the given areaNum
 	public static byte readArea(int areaNum) throws IOException{
-		
 		RandomAccessFile disk = new RandomAccessFile(diskMem,"r");
+		areaNum = areaNum * 1024;
 		disk.seek(areaNum); 
-		byte thisByte = disk.readFully(areaNum);
+		byte thisByte = disk.readByte();
 		disk.close();
 		return thisByte;
 	}
