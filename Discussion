@@ -37,4 +37,13 @@ if it is straying from your idea. My changes are in the process of making the li
 valueStorage with the keys as the identifiers and the values as the next location of the next 
 identifier. when creating the linked list calls to allocate and diskspace will be made to check 
 locations for the next node and to obtain the byte from the diskspace.
--Raymond --> Will 
+-Raymond --> Will
+
+
+readByte just reads one byte at a time and we need to read 1024 bytes so we can could create
+a while loop to fill a byte array. Alternatively, the read method in RandomAccessFile
+returns an integer that lets you know how many bytes were read into the buffer. I kind of think
+we should use readFully. I will try some small tests on my own in the next hour and post another note
+here.
+-Steve --> Raymond
+-Steve --> Raymond 
