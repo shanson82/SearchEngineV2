@@ -1,0 +1,15 @@
+ppackage src.org.uiowa.cs2820.engine;
+
+
+public class ValueLinkedList {
+	public NodeParty next; 
+	
+	
+		
+		
+
+
+	public boolean isEmpty(){
+		return(next==null);
+}
+}
