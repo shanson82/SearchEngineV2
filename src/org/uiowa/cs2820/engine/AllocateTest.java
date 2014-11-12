@@ -10,26 +10,27 @@ import org.junit.Test;
 
  // Note: need to start with an empty memoryMap.txt file or no file to pass the tests
 public class AllocateTest {
+	BitSet b = new BitSet();
+	Allocate a = new Allocate(b);
 	
 	@Test
 	public void test0() throws IOException {
-		assertEquals(Allocate.allocate(), 0);
+		assertEquals(a.allocate(), 0);
 	}
 	
 	@Test
 	public void test1() throws IOException {
-		Allocate.free(0);
-		assertEquals(Allocate.getSpace().length(), 0);
+		a.free(0);
+		assertEquals(b.length(), 0);
 	}
 
 	@Test
 	public void test2() throws IOException {
-		Allocate.allocate();
-		Allocate.allocate();
-		assertEquals(Allocate.allocate(), 2);
-		System.out.println(Allocate.getSpace());
+		a.allocate();
+		a.allocate();
+		assertEquals(a.allocate(), 2);
 	}
-/*	
+	
 	@Test
 	public void test3() throws IOException {
 		System.out.println("test 3");
@@ -60,5 +61,4 @@ public class AllocateTest {
 		c.clear(2);
 		assertEquals(a.getSpace(), c);
 	}
-*/	
 }
