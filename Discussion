@@ -16,3 +16,38 @@ point for the valueStorage to start writing.
 
 So is the node class ready now or do we still have to modify it somehow?
 -Raymond --> Justin
+
+11/11
+For Raymond -
+In the read() method in the diskspace class the area number given to 
+disk.seek should be multiplied by 1024 (should probably create a global 
+constant in the diskspace class for the block size). And disk.readByte() should
+be changed to disk.read(byte[] b) or disk.readFully(byte[] b). I'm not sure which
+method should be used. In the write method, the area number should also be multiplied
+by the block size when using the seek() method.
+-Steve
+
+Hey I updated the diskspace with the multiplication of 1024 but I did not change the read byte 
+because if it takes an argument then the areaNum would be returned. disk.seek(areaNum) goes to 
+the location and the disk.readByte() returns whatever byte is at that location.
+-Raymond --> Steve
+
+Will, the changes I have made to valueStorage are not yet complete nor do you have to keep them
+if it is straying from your idea. My changes are in the process of making the linked list in 
+valueStorage with the keys as the identifiers and the values as the next location of the next 
+identifier. when creating the linked list calls to allocate and diskspace will be made to check 
+locations for the next node and to obtain the byte from the diskspace.
+-Raymond --> Will
+
+
+readByte just reads one byte at a time and we need to read 1024 bytes so we can could create
+a while loop to fill a byte array. Alternatively, the read method in RandomAccessFile
+returns an integer that lets you know how many bytes were read into the buffer. I kind of think
+we should use readFully. I will try some small tests on my own in the next hour and post another note
+here.
+-Steve --> Raymond
+-Steve --> Raymond 
+
+Ok that makes sense, thanks for clearing that up. Readfully takes in an argument but I dont know
+what it should be. And should the while loop be inside my readarea method?
+-Raymond --> Steve
