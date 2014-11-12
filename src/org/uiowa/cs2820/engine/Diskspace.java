@@ -20,6 +20,7 @@ public class Diskspace {
 		int diskSize;
 		if(diskMem.exists()) { //check to see if file exist here since not nec. for read method
 			RandomAccessFile disk = new RandomAccessFile(diskMem, "rw");
+			areaNum = areaNum * 1024;
 			disk.seek(areaNum);
 			disk.write(element);
 			disk.close();
@@ -29,6 +30,7 @@ public class Diskspace {
 		else{ //creates new file and writes to it if it didnt exist
 			diskMem = new File("diskSpace.txt");
 			RandomAccessFile disk = new RandomAccessFile(diskMem, "rw");
+			areaNum = areaNum * 1024;
 			disk.seek(areaNum);
 			disk.write(element);
 			disk.close();
@@ -41,7 +43,7 @@ public class Diskspace {
 		
 		RandomAccessFile disk = new RandomAccessFile(diskMem,"r");
 		disk.seek(areaNum); 
-		byte thisByte = disk.readByte();
+		byte thisByte = disk.readFully(areaNum);
 		disk.close();
 		return thisByte;
 	}
