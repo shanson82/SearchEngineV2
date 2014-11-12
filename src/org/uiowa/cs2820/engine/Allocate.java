@@ -3,7 +3,7 @@ package org.uiowa.cs2820.engine;
 import java.io.IOException;
 import java.util.BitSet;
 
-import src.org.uiowa.cs2820.engine.Checkpoint;
+import org.uiowa.cs2820.engine.Checkpoint;
 
 public class Allocate {
 
