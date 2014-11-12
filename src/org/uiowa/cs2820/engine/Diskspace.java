@@ -39,14 +39,14 @@ public class Diskspace {
 		
 	}
 	//reads a byte from the given areaNum
-	public static byte readArea(int areaNum) throws IOException{
+	public static byte[] readArea(int areaNum) throws IOException{
 		RandomAccessFile disk = new RandomAccessFile(diskMem,"r");
+		byte[] theseBytes = new byte[(int) disk.length()];
 		areaNum = areaNum * 1024;
 		disk.seek(areaNum); 
-		byte[] thisByte = disk.readFully(arg0);//takes an argument
-		disk.readFully(thisByte);
+		disk.readFully(theseBytes);
 		disk.close();
-		return thisByte;
+		return theseBytes;
 	}
 	
 	
