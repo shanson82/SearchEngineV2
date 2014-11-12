@@ -47,3 +47,7 @@ we should use readFully. I will try some small tests on my own in the next hour 
 here.
 -Steve --> Raymond
 -Steve --> Raymond 
+
+Ok that makes sense, thanks for clearing that up. Readfully takes in an argument but I dont know
+what it should be. And should the while loop be inside my readarea method?
+-Raymond --> Steve

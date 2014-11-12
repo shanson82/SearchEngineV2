@@ -43,7 +43,8 @@ public class Diskspace {
 		RandomAccessFile disk = new RandomAccessFile(diskMem,"r");
 		areaNum = areaNum * 1024;
 		disk.seek(areaNum); 
-		byte thisByte = disk.readByte();
+		byte[] thisByte = disk.readFully(arg0);//takes an argument
+		disk.readFully(thisByte);
 		disk.close();
 		return thisByte;
 	}

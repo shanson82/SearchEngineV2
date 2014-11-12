@@ -21,15 +21,15 @@ public class ValueStorage {
 	//
 	//think of this node as (areaNum,byte)
 	//a constructor similar to a linked list
-	public ValueStorage(){
-		next1 = 0; //since the list is initially empty the next has no value
-		start = new Node(null, next1); //null will become the byte[] from the areaNum
-									   //while next will find the next loc of next load
-		size = 0; //no byte = no size
+	public ValueStorage(byte[] a, int loc){
+		this.start = new Node(a,loc);
+		this.next1 = 0; //since the list is initially empty the next has no value
+		this.size = a.length; //no byte = no size
 	}
 	//
 	public void add(byte[] data){//adds to the linked list; this is the identifier
-		Node temp = new Node(data, 0); 
+		int areaNum =  //should get this from allocate maybe
+		Node temp = new Node(data, areaNum); 
 		Node current = start; //starting point to our linked list
 		while(current.)
 	}
