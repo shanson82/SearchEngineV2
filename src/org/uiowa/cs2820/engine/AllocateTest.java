@@ -28,36 +28,28 @@ public class AllocateTest {
 		Allocate.allocate();
 		assertEquals(Allocate.allocate(), 2);
 	}
-	/*
+	
 	@Test
 	public void test3() throws IOException {
-		System.out.println("test 3");
-		System.out.println("b: " + b);
-		System.out.println(a.getSpace());
-		b = a.getSpace();
-		int i = b.length() - 1;
+		int i = Allocate.getSpace().length() - 1;
 		while (i >= 0) {
-			a.free(i);
+			Allocate.free(i);
 			i--;
-			System.out.println("b: " + b);
 		}
-		b = a.getSpace();
-		assertEquals(b.length(), 0);
+		assertEquals(Allocate.getSpace().length(), 0);
 	}
 	
 	@Test
 	public void test4() throws IOException {
-		System.out.println("test4");
-		System.out.println(b);
-		a.allocate();
-		a.allocate();
-		a.allocate();
-		a.allocate();
-		a.free(2);
+		Allocate.allocate();
+		Allocate.allocate();
+		Allocate.allocate();
+		Allocate.allocate();
+		Allocate.free(2);
 		BitSet c = new BitSet(4);
 		c.set(0,4,true);
 		c.clear(2);
-		assertEquals(a.getSpace(), c);
+		assertEquals(Allocate.getSpace(), c);
+		System.out.println(Allocate.getSpace());
 	}
-	*/
 }
