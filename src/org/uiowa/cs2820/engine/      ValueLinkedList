@@ -1,0 +1,17 @@
+public class ValueLinkedList {
+    public NodeParty next;
+   
+   
+       
+       
+
+
+    public boolean isEmpty(){
+        return(next==null);
+}
+   
+   
+   
+   
+}
+       
