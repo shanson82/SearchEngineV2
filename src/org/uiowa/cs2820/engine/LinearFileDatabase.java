@@ -64,7 +64,7 @@ public class LinearFileDatabase implements Database {
 				int areaToWriteKey = Allocate.allocate();
 				h.setNext(areaToWriteKey);
 				G.writeArea(0, utility.convert(h));
-				KeyStorage ks = new KeyStorage(key);
+				keyStorage ks = new keyStorage(key);
 				ValueStorage vs = new ValueStorage(id, -1);
 				ks.getNode().setValue(vs.getArea()); // set pointer of KeyNode to point to IDNode
 				ks.putNode(areaToWriteKey);
@@ -89,7 +89,7 @@ public class LinearFileDatabase implements Database {
 				// either no other keys in file or no matches and now at the end of the list
 				if (k.getNext() == -1) {
 					int areaToWriteKey = Allocate.allocate();
-					KeyStorage ks = new KeyStorage(key);
+					keyStorage ks = new keyStorage(key);
 					ValueStorage vs = new ValueStorage(id, -1);
 					ks.getNode().setValue(vs.getArea());
 					ks.putNode(areaToWriteKey);
