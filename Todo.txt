@@ -41,3 +41,14 @@ Justin, Will, Steve, and Raymmond met.  Steve and Justin refined Diskspace, keyS
 eliminate some errors.  Raymmond and Will worked on valueStorage.  At this point we need to finish ValueStorage and
 work on unit tests and integration tests.
 
+11/14 Update
+Steve and Will met in the morning.  Went through and made lists of methods and interaction of entire program.  Made
+comment about redesign.
+
+Justin, Will, Steve, and Raymmond met during discussion hour.  Implemented new Node objects for both valueStorage and 
+keyStorage.  
+
+Steve and Will continued to work after discussion hour.  Met with Professor Herman and discussed ramifications of new 
+valueStorage and keyStorage on possible unit tests.  He was okay with it.
+
+Will and Justin met in the afternoon.  Worked on documentation of the process.
