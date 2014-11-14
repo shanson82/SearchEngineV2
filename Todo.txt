@@ -41,6 +41,10 @@ Justin, Will, Steve, and Raymmond met.  Steve and Justin refined Diskspace, keyS
 eliminate some errors.  Raymmond and Will worked on valueStorage.  At this point we need to finish ValueStorage and
 work on unit tests and integration tests.
 
+11/13 Update
+Steve and Will met in the morning.  Created new Head object to act as beginning node for diskSpace.  Exempt from 
+being written to or deleted.
+
 11/14 Update
 Steve and Will met in the morning.  Went through and made lists of methods and interaction of entire program.  Made
 comment about redesign.
