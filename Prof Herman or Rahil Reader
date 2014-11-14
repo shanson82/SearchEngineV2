@@ -1,0 +1,165 @@
++State of Program:
++ Due to changes in the final 48 hours of construction, the overall design and structure of the program was altered to
++ support a larger functionality, rather than independent functioning of classes. Although this violates important
++ principals of design, impending deadlines forced the team to sacrifice certain features in order to deliver a
++ functioning product. The result is a loss in ideal theory, but an improvement in performance and overall
++ functionality of the program.
++
++
++Limitations: Due to overall changes in program structure, our program currently is limited in the following areas.
++1. Deltion is not implemented
++2. Analyziation of identifiers size.
++3. Value and Key Storage do not have have J-Unit testing.
++
++Integration Testing:
++-FieldTest acts an an overall integration test.
++
++Class Testing:
++AllocateTest
++- Should begin with an empty/non-existent memoryMap.txt
++
++FieldTest
++- Should begin with empty/non-existent memoryMap.txt and empty diskSpace.txt
++
++DiskSpaceTest:
++- Raymond write here
++
++
++CheckPoint Test:
++- YiCheng write here
++
++
++Classes/Methods/External Calls
++
++Field: Methods
++getFieldName()
++getFieldValue()
++toBytes()
++
++Field: External Calls
++convert() via utility
++
++
++Allocate: Methods
++setSpace()
++allocate()
++free()
++
++Allocate: External Calls
++restore() via CheckPoint
++Checkpoint() via CheckPoint
++
++
++CheckPoint: Methods
++save()
++restore()
++
++CheckPoint: External Calls
++convert() via utility
++revert() via utility
++
++
++Database: Methods
++- null
++
++Field: Methods
++getFieldName()
++getFieldValue()
++toBytes()
++
++Field: External Calls
++convert via Utility
++
++
++FieldSearch: Method:
++findEquals()
++
++FieldSearch: External Calls
++toBytes() via Field
++fetch() via LinearFileDatabase
++ValueStorage() via ValueStorage
++getValue() via KeyNode
++
++
++Head: Methods
++getArea()
++getNext()
++setNext()
++
++Head: External Calls
++-null
++
++
++IDNode: Methods
++getid()
++getNext()
++setNext()
++
++IDNode: External Calls
++-null
++
++
++Indexer: Methods
++addField()
++
++Indexer: External Calls
++Database – Constructor
++toBytes ()via Field
++store() via LinearFileDatabase
++
++
++KeyNode: Methods
++getKey()
++getNext()
++setNext()
++getValue()
++setValue()
++
++KeyNode: External Calls
++-null
++
++
++LinearFileDatabase: Methods
++fetch()
++store()
++delete() - Non functional
++
++LinearFileDatabase: External Calls
++allocate() via Allocate
++write() via Disk
++
++
++ValueStorage: Methods
++getArea()
++load()
++store()
++
++ValueStorage: External Calls
++convert() via Utility
++allocate() via Allocate
++readArea() via Diskspace
++revert() via Utility
++getid() via IDNode
++Diskspace()
++IDNode()
++getNext() via KeyNode
++setNext() via IdNode
++writeArea() via Diskspace
++
++
++KeyStorage: Methods
++putNode()
++getNode()
++
++
++KeyStorage: External Calls
++convert() via Utility
++Diskspace()
++
++
++Utility: Methods
++convert()
++revert()
++
++Utility: External Methods
++- null 
