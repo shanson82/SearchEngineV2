@@ -7,12 +7,11 @@ import java.util.ArrayList;
 public class ValueStorage {
 	
 	private IDNode idnode; // identifier node
-	private int areaToWrite; // this is non-negative if identifier is the first written to a field
-	private int areaToSearch; // this is non-negative if not the first identifier to be written to a field
+	private int areaToWrite; // area to write the node
+	private int areaToSearch; // area to start searching
 	
 	// constructor to use if storing an identifier
 	ValueStorage(String id, int areaToSearch) {
-		System.out.println(id);
 		byte[] idArray = utility.convert(id);
 		this.idnode = new IDNode(idArray);
 		this.areaToSearch = areaToSearch;
@@ -40,7 +39,6 @@ public class ValueStorage {
 	public ArrayList<String> load() {
 		ArrayList<String> identifiers = new ArrayList<String>();
 		if (this.areaToSearch == -1) {
-			System.out.println("ValueStorage load - nothing to return");
 			return identifiers;
 		}
 		File diskMem = new File("diskSpace.txt");
@@ -48,14 +46,10 @@ public class ValueStorage {
 		int searchArea = this.areaToSearch;
 		while (true) {
 			try {
-				System.out.println(searchArea);
 				byte[] i = G.readArea(searchArea);
-				System.out.println(i);
 				IDNode current = (IDNode) utility.revert(i);
-				System.out.println(current.getNext());
 				// convert identifier from byte[] to String
 				String id = (String) utility.revert(current.getid());
-				System.out.println(id);
 				identifiers.add(id);
 				// if next value == -1, then at end of list of identifiers, return the ArrayList
 				if (current.getNext() == -1) {
