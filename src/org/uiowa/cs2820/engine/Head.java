@@ -9,6 +9,7 @@ public class Head implements Serializable {
 	private int area;
 	private int next;
 	
+	
 	Head(int area) {
 		this.area = area;
 		this.next = -1;
@@ -26,10 +27,4 @@ public class Head implements Serializable {
 		this.next = area;
 	}
 	
-	public Head getHead() throws IOException {
-		File diskMem = new File("diskSpace.txt");
-		Diskspace G = new Diskspace(diskMem);
-		byte[] h = G.readArea(0);
-		return (Head) utility.revert(h);
-	}
 }
