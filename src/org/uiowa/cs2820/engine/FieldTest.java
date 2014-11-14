@@ -9,7 +9,7 @@ public class FieldTest {
 
 	@Test
 	public void test0() {
-	  Database D = new LinearMemoryDatabase();
+	  Database D = new LinearFileDatabase();
 	  FieldSearch F = new FieldSearch(D);
 	  Field F1 = new Field("1",new Integer(45));
 	  assertEquals(F.findEquals(F1).size(),0);
@@ -17,7 +17,7 @@ public class FieldTest {
 	
 	@Test
 	public void test1() {
-	  Database D = new LinearMemoryDatabase();
+	  Database D = new LinearFileDatabase();
 	  FieldSearch F = new FieldSearch(D);
 	  Indexer I = new Indexer(D,"abc");
 	  Field F1 = new Field("1",new Integer(45));
@@ -35,7 +35,7 @@ public class FieldTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void test2() {
-	  Database D = new LinearMemoryDatabase();
+	  Database D = new LinearFileDatabase();
 	  Indexer I = new Indexer(D,"data");
 	  Field F = new Field("Iowa",
 		"some very long string that should not" +
