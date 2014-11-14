@@ -14,31 +14,7 @@ public class Field implements Serializable {
 	private String FieldName; 
 	private Object FieldValue;
 	
-	public static byte[] convert(Object O) {
-	  // private method converts objects into byte array
-	  ByteArrayOutputStream M = new ByteArrayOutputStream();
-	  ObjectOutput N = null;
-	  try {
-		N = new ObjectOutputStream(M);
-		N.writeObject(O);
-	    } 
-	  catch (IOException e) {
-        return null; // wrong, but should not happen	    	
-	    }
-	  return M.toByteArray();
-	  }
-	
-	public static Object revert(byte[] seq) {
-	  Object O = null;  // default value
-	  try {
-		ByteArrayInputStream M = new ByteArrayInputStream(seq);
-		ObjectInputStream N = new ObjectInputStream(M);
-		O = N.readObject();
-		}
-	  catch (Exception e) { };
-		return O;
-	  }
-	
+
 	// constructor for Fields with String
 	Field(String FieldName, Object Value) throws IllegalArgumentException {
 	  this.FieldName = FieldName;
@@ -54,7 +30,7 @@ public class Field implements Serializable {
 	  return FieldValue;
 	  }
 	public byte[] toBytes() {
-	  byte[] wholeField = convert(this);
+	  byte[] wholeField = utility.convert(this);
 	  return wholeField;
 	  //byte[] ByteFieldName = FieldName.getBytes();
 	  //byte[] R = new byte[ByteFieldName.length + FieldValue.length];
@@ -62,4 +38,30 @@ public class Field implements Serializable {
 	  //System.arraycopy(FieldValue,0,R,ByteFieldName.length,FieldValue.length);
 	  //return R;
 	  }
+	
+	/*	public static byte[] convert(Object O) {
+	  // private method converts objects into byte array
+	  ByteArrayOutputStream M = new ByteArrayOutputStream();
+	  ObjectOutput N = null;
+	  try {
+		N = new ObjectOutputStream(M);
+		N.writeObject(O);
+	    } 
+	  catch (IOException e) {
+      return null; // wrong, but should not happen	    	
+	    }
+	  return M.toByteArray();
+	  }
+	
+	public static Object revert(byte[] seq) {
+	  Object O = null;  // default value
+	  try {
+		ByteArrayInputStream M = new ByteArrayInputStream(seq);
+		ObjectInputStream N = new ObjectInputStream(M);
+		O = N.readObject();
+		}
+	  catch (Exception e) { };
+		return O;
+	  }
+*/
 	}
