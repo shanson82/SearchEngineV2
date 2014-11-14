@@ -20,6 +20,9 @@ not checked in (do "git add .project") so that a git clone
 or git pull will have what's needed for Eclipse to import
 the repository.
 
+11/5 Update
+Steve, Justin, and Will met with Professor Herman to help better understand the diskspace structure and value/keystorage.
+Then met in Linux lab to integrate structure into our code.
 
 11/6 Update
 .project file was added to the repository
@@ -29,3 +32,12 @@ Allocate - Steve
 Diskspace - Raymond
 KeyStorage - Justin
 ValueStorage - Will
+
+11/11 Update
+Will and Steve met and worked on valueStorage
+
+11/12 Update
+Justin, Will, Steve, and Raymmond met.  Steve and Justin refined Diskspace, keyStorage, and Allocate to help with functionality and 
+eliminate some errors.  Raymmond and Will worked on valueStorage.  At this point we need to finish ValueStorage and
+work on unit tests and integration tests.
+
