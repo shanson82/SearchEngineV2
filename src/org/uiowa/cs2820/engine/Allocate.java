@@ -8,12 +8,7 @@ import org.uiowa.cs2820.engine.Checkpoint;
 public class Allocate {
 
 	private static BitSet space = new BitSet();
-	//static Checkpoint c = new Checkpoint(space);
 
-	
-
-
-	
 	public static BitSet getSpace() throws IOException {
 		Checkpoint c = new Checkpoint(space);
 		space = (BitSet) c.restore();
@@ -37,23 +32,23 @@ public class Allocate {
 			c = new Checkpoint(Allocate.space);
 			c.save();
 			return 0;
-		} else {
-			for (nextAvailable = 0; nextAvailable <= Allocate.space.length(); nextAvailable++) {
-				if (space.get(nextAvailable) == false) {
-					space.set(nextAvailable);
-					// use Checkpoint to save bit array back to file
-					System.out.println("next space set: " + space);
-					c = new Checkpoint(space);
-					c.save();
-					//StaticCheckpoint.save();
-					return nextAvailable;
-				}
+		} 
+		for (nextAvailable = 0; nextAvailable <= Allocate.space.length(); nextAvailable++) {
+			if (space.get(nextAvailable) == false) {
+				space.set(nextAvailable);
+				// use Checkpoint to save bit array back to file
+				System.out.println("next space set: " + space);
+				c = new Checkpoint(space);
+				c.save();
+				//StaticCheckpoint.save();
+				return nextAvailable;
 			}
 		}
+
 		// this should be unreachable
 		c.save();
-		//return nextAvailable + 1;
-		return 5;
+		return nextAvailable + 1;
+
 	}
 
 	public static void free(int block) throws IOException {
