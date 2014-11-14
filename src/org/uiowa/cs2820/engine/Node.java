@@ -3,29 +3,34 @@ package org.uiowa.cs2820.engine;
 //import java.util.ArrayList;
 
 public class Node {
-// Node is a basic unit in the database
-byte[] Key;  // Key of this node for lookup
-//ArrayList<String> Identifiers;
-int start;
-int size;    // not yet implemented
+	// Node is a basic unit in the database
+	private byte[] Key;  // Key of this node for lookup
+	private int value;
+	private int next;
 
-Node(byte[] f, int e) {
-	this.Key = f;
-	this.start = e;
-	//this.Identifiers = new ArrayList<String>();
-	//this.Identifiers.add(id);
-  }
+	Node(byte[] f, int e) {
+		this.Key = f;
+		this.value = e;
+		this.next = -1;
+	}
 
-//public void add(String id) { 
-	//Identifiers.remove(id);  // does nothing if id not already there
-	//Identifiers.add(id);
-  //}
+	public byte[] getKey() {
+		return this.Key;
+	}
+	
+	public int getValue() {
+		return this.value;
+	}
 
-//public void del(String id) {
-	//Identifiers.remove(id);
-  //}
+	public void setValue(int area) {
+		this.value = area;
+	}
 
-public int getSize() {
-	return size;
-  }
+	public int getNext() {
+		return this.next;
+	}
+	
+	public void setNext(int area) {
+		this.next = area;
+	}
 }

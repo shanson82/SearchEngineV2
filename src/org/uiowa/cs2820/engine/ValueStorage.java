@@ -1,59 +1,108 @@
 package org.uiowa.cs2820.engine;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import src.org.uiowa.cs2820.engine.Diskspace;
-
 
 public class ValueStorage {
-	ArrayList<String> ArrayGuy;
-	LinkedList<byte[]> L;
-	Object[] O;
-	//
-	private Node start; //could be the areaNum for the first location of the byte
-	private int next1; //this should point to next size of byte 
-	private int size; //the size of the byte
-
-	///Constructor -
-	ValueStorage(ArrayList<String> ArrayGuy){
-		this.ArrayGuy = ArrayGuy;
-	}
-	//
-	//think of this node as (areaNum,byte)
-	//a constructor similar to a linked list
-	public ValueStorage(byte[] a, int loc){
-		this.start = new Node(a,loc);
-		this.next1 = 0; //since the list is initially empty the next has no value
-		this.size = a.length; //no byte = no size
-	}
-	//
-	public void add(byte[] data){//adds to the linked list; this is the identifier
-		int areaNum =  //should get this from allocate maybe
-		Node temp = new Node(data, areaNum); 
-		Node current = start; //starting point to our linked list
-		while(current.)
-	}
-	public void init(){
-	}
-
-
-	public void clear(){
-	}
-
-
-	///Reads entire value of Linked List and Converts to array of identifiers
-	///To Do: should create linked list directly from calls to disc space.
-	public void load(){
 	
-	Object[] Expander = L.toArray();
-	///To Do - Need to figure out if we should convert the bytes to identifiers before
-	///or after they placed in the array.
+	private IDNode inode; // identifier node
+	private byte[] key; // key in byte[] format
+	private int areaToWrite; // this is non-negative if identifier is the first written to a field
+	private int areaToSearch; // this is non-negative if not the first identifier to be written to a field
+	
+	// constructor to use if the first identifier to be written to a field
+	ValueStorage(String id, int areaToWrite) {
+		byte[] idArray = Utility.convert(id);
+		this.inode = new IDNode(idArray);
+		this.key = null;
+		this.areaToWrite = areaToWrite;
+		this.areaToSearch = -1;
 	}
 	
+	// constructor to use if not the first identifier to be written to a field
+	ValueStorage(String id, int areaToWrite, int areaToSearch) {
+		byte[] idArray = Utility.convert(id);
+		this.inode = new IDNode(idArray);
+		this.key = null;
+		this.areaToWrite = -1;
+		this.areaToSearch = areaToSearch;
+	}
+
+	// constructor to use if searching for identifiers (see FieldSearch)
+	ValueStorage(int areaToSearch) {
+		this.inode = null;
+		this.key = null;
+		this.areaToWrite = -1;
+		this.areaToSearch = areaToSearch;
+	}
+
+	public void store() {
+		byte[] identifier = Utility.convert(this.inode); // identifier node to write to file
+		File diskMem = new File("diskSpace.txt");
+		DiskSpace G = new DiskSpace(diskMem);
+		try {
+			// the area in the file to write the identifier is known
+			if (this.areaToWrite != -1) {
+				G.writeArea(this.areaToWrite, identifier);
+				return;
+			} else { // now have to search for place to insert identifier - traverse to the end of the list
+				int searchArea = this.areaToSearch;
+				while (true) {
+					byte[] i = G.readArea(searchArea); 
+					IDNode current = (IDNode) Utility.revert(i);
+					// if getNext == -1, then we are at the end of the list - insert the identifier
+					if (current.getNext() == -1) {
+						// find area to write the identifier
+						int writeArea = Allocate.allocate();
+						// create link/pointer from old end of list to new identifier
+						current.setNext(writeArea);
+						// write current back to file
+						G.writeArea(searchArea, Utility.convert(current));
+						// write new identifier to file
+						G.writeArea(writeArea, Utility.convert(this.inode));
+						return;
+					}
+					// increment to area where next identifier is stored
+					searchArea = current.getNext();
+				}
+			
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return;
+	}
 	
-	///Writes entire ArrayList of Identifiers
-	public void storage(Object[] O){
-	this.O = O;
+	public ArrayList<String> load() {
+		ArrayList<String> identifiers = new ArrayList<String>();
+		if (this.areaToSearch == -1) {
+			System.out.println("ValueStorage load - nothing to return");
+			return identifiers;
+		}
+		File diskMem = new File("diskSpace.txt");
+		DiskSpace G = new DiskSpace(diskMem);
+		int searchArea = this.areaToSearch;
+		while (true) {
+			try {
+				byte[] i = G.readArea(searchArea);
+				IDNode current = (IDNode) Utility.revert(i);
+				// convert identifier from byte[] to String
+				String id = (String) Utility.revert(current.getid());
+				identifiers.add(id);
+				// if next value == -1, then at end of list of identifiers, return the ArrayList
+				if (current.getNext() == -1) return identifiers;
+				// increment to next area to search
+				searchArea = current.getNext();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
 	
-	}}
+		
+	}
+
+}
+
