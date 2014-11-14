@@ -29,3 +29,9 @@ Allocate - Steve
 Diskspace - Raymond
 KeyStorage - Justin
 ValueStorage - Will
+
+11/12 Update
+Justin, Will, Steve, and Raymmond met.  Steve and Justin refined Diskspace, keyStorage, and Allocate to help with functionality and 
+eliminate some errors.  Raymmond and Will worked on valueStorage.  At this point we need to finish ValueStorage and
+work on unit tests and integration tests.
+
