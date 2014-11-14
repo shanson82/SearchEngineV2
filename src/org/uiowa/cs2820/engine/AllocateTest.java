@@ -1,5 +1,6 @@
 package org.uiowa.cs2820.engine;
 
+import java.util.BitSet;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
