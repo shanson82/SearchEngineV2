@@ -3,7 +3,6 @@ package org.uiowa.cs2820.engine;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.util.BitSet;
 
 import org.junit.Test;
 
