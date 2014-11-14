@@ -26,7 +26,6 @@ public class Allocate {
 		Allocate.space = (BitSet) c.restore();
 		int nextAvailable;
 		if (space == null) {
-			System.out.println("returned bitset is null");
 			space = new BitSet();
 			space.set(0);
 			c = new Checkpoint(Allocate.space);
@@ -37,7 +36,6 @@ public class Allocate {
 			if (space.get(nextAvailable) == false) {
 				space.set(nextAvailable);
 				// use Checkpoint to save bit array back to file
-				System.out.println("next space set: " + space);
 				c = new Checkpoint(space);
 				c.save();
 				//StaticCheckpoint.save();
