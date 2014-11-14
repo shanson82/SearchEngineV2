@@ -37,8 +37,8 @@ public class LinearFileDatabase implements Database {
 				return null;
 			}
 			int currentArea = headNode.getNext();
+			keyStorage ks = new keyStorage();
 			while (true) {
-				keyStorage ks = new keyStorage();
 				Node n = ks.get(currentArea);
 				if (n.getKey() == key) {
 					return n;
@@ -52,9 +52,7 @@ public class LinearFileDatabase implements Database {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
-		
-	
+		return null;
 	}
 	
 	public void store(byte[] key, String id) {
