@@ -1,5 +1,6 @@
 package org.uiowa.cs2820.engine;
 
+import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -11,7 +12,7 @@ public class FieldTest {
 	  Database D = new LinearMemoryDatabase();
 	  FieldSearch F = new FieldSearch(D);
 	  Field F1 = new Field("1",new Integer(45));
-	  assertEquals(F.findEquals(F1).length,0);
+	  assertEquals(F.findEquals(F1).size(),0);
 	  }
 	
 	@Test
@@ -26,10 +27,10 @@ public class FieldTest {
 	  I.addField(F2);
 	  I = new Indexer(D,"def");
 	  I.addField(F3);
-	  String[] S = F.findEquals(F3);
-	  assertEquals(S.length,2);
-	  assertEquals(S[0],"abc");
-	  assertEquals(S[1],"def");
+	  ArrayList<String> S = F.findEquals(F3);
+	  assertEquals(S.size(),2);
+	  assertEquals(S.get(0),"abc");
+	  assertEquals(S.get(1),"def");
 	  }
 	
 	@Test(expected = IllegalArgumentException.class)
