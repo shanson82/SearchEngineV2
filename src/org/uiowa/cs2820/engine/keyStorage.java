@@ -7,12 +7,12 @@ public class keyStorage{
 	private KeyNode knode;
 	
 	keyStorage(byte[] key){
-		this.knode = newKeyNode(key);
+		this.knode = new KeyNode(key);
 	}
 	public void putNode(int area){
 		byte[] key = utility.convert(this.knode);
-		File diskMem = newFile("diskSpace.txt");
-		Diskspace G = new DiskSpace(diskMem);
+		File diskMem = new File("diskSpace.txt");
+		Diskspace G = new Diskspace(diskMem);
 		try{
 			G.writeArea(area, key);
 			return;
